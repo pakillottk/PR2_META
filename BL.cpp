@@ -4,7 +4,11 @@
 
 //CONSTRUCTORES Y DESTRUCTORES
 //===========================
+<<<<<<< HEAD
 BL::BL(unsigned** f, unsigned** d, unsigned t): solucion(0) {
+=======
+BL::BL(unsigned** f, unsigned** d, unsigned t) {
+>>>>>>> 794f6bf0617c552795630c4e9bc04b88826c8d91
     tam = t;
     flujo = f;
     distancias = d;
@@ -108,7 +112,7 @@ unsigned long BL::ejecutar(unsigned* p) {
     }
 
     unsigned long costeFinal = calculaCoste();
-
+    
     if(Principal::debug) {
         std::cout << "SOLUCION";
         for(unsigned i = 0; i < tam; i++) {
