@@ -95,7 +95,7 @@ void Principal::elegirSemilla() {
     srand(semilla);
 }
 
-void Principal::construirAlgoritmo() {
+void Principal::construirAlgoritmo() {  
     if(metaheuristica)
         delete metaheuristica;
     
@@ -109,6 +109,8 @@ void Principal::construirAlgoritmo() {
              metaheuristica = new ILS("./DAT/" + fichero + ".dat");
         break;
     }  
+    
+    
 }
 
 
@@ -133,7 +135,7 @@ void Principal::ejecutarAlgoritmo() {
     cout << endl;
     
     cout << "Guardando resultados..." << endl;
-    //guardarResultados(coste, tiempo);
+    guardarResultados(coste, tiempo);
     cout << "Resultados almacenados" << endl;
     cout << endl;
 }

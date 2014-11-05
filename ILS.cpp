@@ -7,17 +7,16 @@ ILS::ILS(const string& rutaFichero): Metaheuristica(rutaFichero) {
     bl = new BL(flujo, distancias, tam);
 }
 
-ILS::~ILS() {
-    delete bl;
+ILS::~ILS() {   
+    delete bl;   
 }
 
 unsigned long ILS::mutar(unsigned* p) {
-    unsigned init = rand() % tam;
-    unsigned intercambios = rand() % sublista/2;
+    unsigned init = rand() % tam;  
+    unsigned intercambios = (rand() % tam/2) + tam/2;
     unsigned* afectados = new unsigned[sublista];
     
     unsigned r, s;
-    bool* asignados = new bool[sublista];
     
     if(Principal::debug) {
         cout << "Mutando desde pos: " << init << endl;
@@ -25,8 +24,7 @@ unsigned long ILS::mutar(unsigned* p) {
     }
     
     for(unsigned i = 0; i < sublista; i++) {
-        afectados[i] = (init+i)%tam;       
-        asignados[i] = false;
+        afectados[i] = (init+i)%tam;      
     }
     
     if(Principal::debug)
@@ -38,12 +36,10 @@ unsigned long ILS::mutar(unsigned* p) {
         
         r = rand() % sublista;
         do{
-            s = rand() % sublista;
-        } while(r == s || (asignados[r] && asignados[s]));
+            s = rand() % sublista;      
+        } while(r == s);
         
         intercambiar(p, afectados[r], afectados[s]);
-        asignados[r] = true;
-        asignados[s] = true;
     }
     
     delete [] afectados;
@@ -52,13 +48,9 @@ unsigned long ILS::mutar(unsigned* p) {
 }
 
 unsigned long ILS::ejecutar() {
-    unsigned* s = new unsigned[tam];
     unsigned* s2 = new unsigned[tam];
-    unsigned* s3 = new unsigned[tam];
-    
-    unsigned long costeS;
     unsigned long costeS2;
-    unsigned long costeS3;
+
     
     unsigned evaluaciones = 0;
     
@@ -75,59 +67,39 @@ unsigned long ILS::ejecutar() {
     if(Principal::debug)
         cout << "Coste actual: " << costeActual << endl;
     
-    for(unsigned i = 0; i < tam; i++)
-        s[i] = solucion[i];
-    
-    costeS = costeActual;
-    
     if(Principal::debug)
      cout << "Iniciando bucle..." << endl;
     
-    while(evaluaciones < 24) {     
+    while(evaluaciones < tam*0.6) {     
         if(Principal::debug)
             cout << "EVALUACION: " << evaluaciones << endl;
         
         for(unsigned i = 0; i < tam; i++)
-            s2[i] = s[i];
+            s2[i] = solucion[i];
         
         if(Principal::debug)
          cout << "Mutando solucion..." << endl;
         
-        costeS2 = mutar(s2);
-        
-        if(Principal::debug)
-            cout << "Coste, sol. mutada: " << costeS2 << endl;
-        
-        for(unsigned i = 0; i < tam; i++)
-            s3[i] = s2[i];
+        mutar(s2);
         
         if(Principal::debug)
             cout << "Aplicando busqueda local..." << endl;
-        costeS3 = bl->ejecutar(s3);
+        costeS2 = bl->ejecutar(s2);
         
         if(Principal::debug)
-            cout << "Coste optimizado: " << costeS3 << endl; 
+            cout << "Coste optimizado: " << costeS2 << endl; 
         
-        if(costeS3 < costeS) {
+        if(costeS2 < costeActual) {
             for(unsigned i = 0; i < tam; i++)
-                s[i] = s3[i];
+                solucion[i] = s2[i];
             
-            costeS = costeS3;
-        }
-        
-        if(costeS < calculaCoste()) {
-            for(unsigned i = 0; i < tam; i++)
-                solucion[i] = s[i];
-            
-            costeActual = costeS;
+            costeActual = costeS2;
         }
         
         evaluaciones++;
-    }
-    
-    delete [] s;
+    }   
+
     delete [] s2;
-    delete [] s3;
     
     return costeActual;
 }

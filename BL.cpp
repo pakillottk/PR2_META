@@ -14,6 +14,7 @@ BL::BL(unsigned** f, unsigned** d, unsigned t) {
 }
 
 BL::~BL(){
+    solucion = 0;
     delete [] dlb;
 }
 

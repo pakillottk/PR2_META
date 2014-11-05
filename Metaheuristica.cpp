@@ -22,11 +22,11 @@ Metaheuristica::Metaheuristica(const std::string& rutaFichero) {
 }
 
 Metaheuristica::~Metaheuristica() {
-    destruyeMatriz(flujo);
-    destruyeMatriz(distancias);
-
-    if(solucion)
+    if(solucion) {
+        destruyeMatriz(flujo);
+        destruyeMatriz(distancias);
         delete [] solucion;
+    }
 }
 
 //MÉTODOS PROTECTED

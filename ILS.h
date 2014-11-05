@@ -14,17 +14,17 @@
 using namespace std;
 
 class ILS : public Metaheuristica {
-	protected:
-	BL* bl; //Instancia de la BL
+    protected:
+        BL* bl; //Instancia de la BL
         unsigned long costeActual;
-	unsigned sublista;
-        
+        unsigned sublista;
+
         unsigned long mutar(unsigned* p);
-        
-	public:
-            ILS(const string& rutaFichero);
-	    virtual ~ILS();
-	    unsigned long ejecutar();
+
+    public:
+        ILS(const string& rutaFichero);
+        virtual ~ILS();
+        unsigned long ejecutar();
 };
 
 #endif	/* ILS_H */
