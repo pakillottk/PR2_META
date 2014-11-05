@@ -70,7 +70,7 @@ void Principal::elegirAlgoritmo() {
     do {
         cout << "Seleccione algoritmo: " << endl;
         cout << "1.GRASP" << endl
-             << "2.ILS" << endl 
+             << "2.ILS" << endl ;
         cout << "Opcion: ";
         cin >> opcion;
         cout << endl;
@@ -133,7 +133,7 @@ void Principal::ejecutarAlgoritmo() {
     cout << endl;
     
     cout << "Guardando resultados..." << endl;
-    guardarResultados(coste, tiempo);
+    //guardarResultados(coste, tiempo);
     cout << "Resultados almacenados" << endl;
     cout << endl;
 }

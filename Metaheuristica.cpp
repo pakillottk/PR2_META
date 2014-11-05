@@ -6,6 +6,9 @@
 //CONSTRUCTORES Y DESTRUCTORES
 //===========================
 
+Metaheuristica::Metaheuristica(): flujo(0), distancias(0), solucion(0)
+{}
+
 /*
  *      Dada la ruta de un fichero, debidamente formateado, construye
  *      el objeto.
@@ -196,4 +199,36 @@ void Metaheuristica::generarSolucion(unsigned* p) {
     }
 
     delete [] asignados;
+}
+
+void Metaheuristica::intercambiar(unsigned*& p, unsigned i, unsigned j) {
+    unsigned aux = p[i];
+    p[i] = p[j];
+    p[j] = aux;
+}
+
+bool Metaheuristica::mejoraCambio(unsigned*& p, unsigned i, unsigned j) {
+    long int prev_coste = 0, n_coste = 0;
+
+    prev_coste += costeParcial(p, i);
+    prev_coste += costeParcial(p, j);
+
+    intercambiar(p, i, j);
+
+    n_coste += costeParcial(p, i);
+    n_coste += costeParcial(p, j);
+
+    intercambiar(p, i, j);
+
+    return n_coste < prev_coste;
+}
+
+unsigned Metaheuristica::costeParcial(unsigned*& p, unsigned i) {
+    unsigned long coste = 0;
+
+    for(unsigned j = 0; j < tam; j++) {
+        coste += flujo[i][j] * distancias[p[i]][p[j]];
+    }
+
+    return coste;
 }

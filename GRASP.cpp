@@ -8,7 +8,9 @@ GRASP::GRASP(const std::string& rutaFichero): Metaheuristica(rutaFichero) {
     bl = new BL(flujo, distancias, tam);
 }
 
-GRASP::~GRASP() {}
+GRASP::~GRASP() {
+    delete bl;
+}
 
 //METODOS PUBLICOS
 //================

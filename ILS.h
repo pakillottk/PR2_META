@@ -9,19 +9,22 @@
 #define	ILS_H
 
 #include "Metaheuristica.h"
-
+#include "BL.h"
 #include <iostream>
 using namespace std;
 
-class ILS : Metaheuristica {
-	private:
+class ILS : public Metaheuristica {
+	protected:
 	BL* bl; //Instancia de la BL
-	
+        unsigned long costeActual;
+	unsigned sublista;
+        
+        unsigned long mutar(unsigned* p);
+        
 	public:
-		ILS(const string& rutaFichero);
-		virtual ~ILS();
-
-		unsigned long ejecutar();
+            ILS(const string& rutaFichero);
+	    virtual ~ILS();
+	    unsigned long ejecutar();
 };
 
 #endif	/* ILS_H */

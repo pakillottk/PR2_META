@@ -13,6 +13,7 @@
 #include <climits>
 
 #include "Metaheuristica.h"
+#include "BL.h"
 using namespace std;
 
 /*

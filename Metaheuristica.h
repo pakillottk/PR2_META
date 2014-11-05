@@ -56,6 +56,16 @@ class Metaheuristica{
        void generarSolucion(unsigned* p); 
        //Genera una permutación aleatoria en p
       
+       void intercambiar(unsigned*& p, unsigned i, unsigned j);
+        //Intercambia la posición i por la j.
+
+        bool mejoraCambio(unsigned*& p, unsigned i, unsigned j);
+        //Devuelve true, si intercambiar ambas posiciones mejora.
+        //Devuelve false, en caso contrario.
+
+        unsigned costeParcial(unsigned*& p, unsigned i);
+        //Dada una permutación y una posición, calcula el coste
+        //asignado a esa posición
     public:
         Metaheuristica();
         Metaheuristica(const std::string& rutaFichero);
