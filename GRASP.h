@@ -23,12 +23,14 @@ using namespace std;
 class GRASP : public Metaheuristica {
 	private:
 	BL* bl; //Instancia de la BL
+        float alpha;
+        
+        void solucion_grasp(unsigned* p);
     public:
-        GRASP(const std::string& rutaFichero);
+        GRASP(const std::string& rutaFichero, float _alpha = 0.3);
         virtual ~GRASP();
 
-        virtual unsigned long ejecutar();
-        static void alg_greedy(unsigned* s, unsigned** f, unsigned** d, unsigned tam);
+        virtual unsigned long ejecutar();       
 };
 
 #endif	/* GRASP_H */
