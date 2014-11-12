@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include <string>
-#include <climits>
+#include <vector>
 
 #include "Metaheuristica.h"
 #include "BL.h"
@@ -25,6 +25,10 @@ class GRASP : public Metaheuristica {
 	BL* bl; //Instancia de la BL
         float alpha;
         
+        unsigned long obtenerCoste(unsigned* p, vector<unsigned> asignados, unsigned i, unsigned j);
+        unsigned long calcularUmbral(unsigned long max, unsigned long min, bool mejor_max=false);
+        unsigned long calculaPotencialUnidad(unsigned i);
+        unsigned long calculaPotencialLocalizacion(unsigned i);
         void solucion_grasp(unsigned* p);
     public:
         GRASP(const std::string& rutaFichero, float _alpha = 0.3);
