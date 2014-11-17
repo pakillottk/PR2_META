@@ -13,7 +13,7 @@ ILS::~ILS() {
 
 unsigned long ILS::mutar(unsigned* p) {
     unsigned init = rand() % tam;  
-    unsigned intercambios = (rand() % tam/2) + tam/2;
+    unsigned intercambios = (rand() % tam/3) + (2*tam)/3;
     unsigned* afectados = new unsigned[sublista];
     
     unsigned r, s;
@@ -50,7 +50,9 @@ unsigned long ILS::mutar(unsigned* p) {
 unsigned long ILS::ejecutar() {
     unsigned* s2 = new unsigned[tam];
     unsigned long costeS2;
-
+    unsigned tamEval = tam*0.7;
+    
+    if(tamEval <= 25) tamEval = 300-10*tam;
     
     unsigned evaluaciones = 0;
     
@@ -70,7 +72,7 @@ unsigned long ILS::ejecutar() {
     if(Principal::debug)
      cout << "Iniciando bucle..." << endl;
     
-    while(evaluaciones < tam*0.6) {     
+    while(evaluaciones < tamEval) {     
         if(Principal::debug)
             cout << "EVALUACION: " << evaluaciones << endl;
         

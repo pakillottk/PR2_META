@@ -70,7 +70,7 @@ void Principal::elegirAlgoritmo() {
     do {
         cout << "Seleccione algoritmo: " << endl;
         cout << "1.GRASP" << endl
-             << "2.ILS" << endl ;
+             << "2.ILS" << endl << endl;
         cout << "Opcion: ";
         cin >> opcion;
         cout << endl;
@@ -88,7 +88,7 @@ void Principal::elegirAlgoritmo() {
 }
 
 void Principal::elegirSemilla() {
-    std::cout << std::endl << "Introduzca la semilla: ";
+    std::cout << "Introduzca la semilla: ";
     std::cin >> semilla;
     std::cout << std::endl;
 

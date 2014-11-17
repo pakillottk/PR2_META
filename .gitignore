@@ -8,3 +8,4 @@ Makefile
 *.xml
 *.bash
 *.properties
+*.txt
