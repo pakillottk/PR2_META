@@ -136,15 +136,19 @@ void GRASP::solucion_grasp(unsigned* p) {
      u2 = rand() % lrc_u.size();
     } while(u1 == u2);
 
-    l1 = rand() % lrc_d.size();        
-    do {
-     l2 = rand() % lrc_d.size();
-    } while(l1 == l2);
+    l1 = rand() % lrc_d.size();  
+    if(lrc_d.size() > 1) {
+       do {
+        l2 = rand() % lrc_d.size();
+       } while(l1 == l2);
+    }
     
     if(Principal::debug) {
         cout << "Asignando..." << endl;
         cout << lrc_u[u1] << " con " << lrc_d[l1] << endl;
-        cout << lrc_u[u2] << " con " << lrc_d[l2] << endl;   
+        
+        if(lrc_d.size() > 1)
+            cout << lrc_u[u2] << " con " << lrc_d[l2] << endl;   
     }
     
     p[lrc_u[u1]] = lrc_d[l1];
@@ -152,10 +156,12 @@ void GRASP::solucion_grasp(unsigned* p) {
     asignados_u[lrc_u[u1]] = true;
     asignados_d[lrc_d[l1]] = true;
 
-    p[lrc_u[u2]] = lrc_d[l2];
-    asignados.push_back(lrc_u[u2]);
-    asignados_u[lrc_u[u2]] = true;
-    asignados_d[lrc_d[l2]] = true;
+    if(lrc_d.size() > 1) {
+        p[lrc_u[u2]] = lrc_d[l2];
+        asignados.push_back(lrc_u[u2]);
+        asignados_u[lrc_u[u2]] = true;
+        asignados_d[lrc_d[l2]] = true;
+    }
     
     if(Principal::debug)
         cout << "Etapa 1, completada" << endl;
