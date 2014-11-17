@@ -1,0 +1,10 @@
+Makefile
+*.inc
+*.o
+*.d
+*.dat
+*.exe
+*.mk
+*.xml
+*.bash
+*.properties
