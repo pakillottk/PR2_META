@@ -50,9 +50,10 @@ unsigned long ILS::mutar(unsigned* p) {
 unsigned long ILS::ejecutar() {
     unsigned* s2 = new unsigned[tam];
     unsigned long costeS2;
-    unsigned tamEval = tam*0.7;
+    unsigned tamEval;
     
     if(tamEval <= 25) tamEval = 300-10*tam;
+    else tamEval = tam*0.7;
     
     unsigned evaluaciones = 0;
     
