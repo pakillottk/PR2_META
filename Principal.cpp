@@ -9,7 +9,7 @@ bool Principal::debug = false;
 //CONSTRUCTORES Y DESTRUCTORES
 //===========================
 Principal::Principal(): metaheuristica(0) {
-   
+   /*
     //Activación del modo debug
     activarDebug();
 
@@ -21,6 +21,7 @@ Principal::Principal(): metaheuristica(0) {
 
     //Elección de semilla
     elegirSemilla();    
+    * */
 }
 
 Principal::~Principal() {
@@ -171,7 +172,51 @@ string const Principal::tipo_str() {
 //==============
 
 void Principal::iniciarMenu() {
+    string ficheros[20] ={"Els19",
+                        "Chr20a",
+                        "Chr25a",
+                        "Nug25",
+                        "Bur26a",
+                        "Bur26b",
+                        "Tai30a",
+                        "Tai30b",
+                        "Esc32a",
+                        "Kra32",
+                        "Tai35a",
+                        "Tai35b",
+                        "Tho40",
+                        "Tai40a",
+                        "Sko42",
+                        "Sko49",
+                        "Tai50a",
+                        "Tai50b",
+                        "Tai60a",
+                        "Lipa90a"};
+    
+    Tipo_Algoritmo tipos[2] = {ALG_GRASP, ALG_ILS};
+    
+    semilla = 1;
+    srand(semilla);
+    unsigned long coste;
+    double tiempo;
+    Timer timer;
+    
+    for(unsigned i = 0; i < 20; i++) {
+        fichero = ficheros[i];
+        cout << "Fichero: " << fichero << endl;
+        
+        for(unsigned j = 0; j < 2; j++) {
+            tipo = tipos[j];          
+            cout << "Algoritmo: " << tipo_str() << endl;
+            ejecutarAlgoritmo();
+        }
+        
+        cout << endl;
+    }
+    
+    cout << "FICHEROS ANALIZADOS" << endl;
 
+    /*
     unsigned short int opcion;
 
     do {
@@ -228,4 +273,6 @@ void Principal::iniciarMenu() {
         }
 
     } while (true);
+     
+     */
 }
