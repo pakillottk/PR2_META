@@ -18,7 +18,7 @@ using namespace std;
 
 /*
  *      Clase que contiene la funcionalidad del
- *      algoritmo Greedy.
+ *      algoritmo GRASP.
  */
 class GRASP : public Metaheuristica {
 	private:

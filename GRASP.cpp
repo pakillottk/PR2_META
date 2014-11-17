@@ -52,8 +52,8 @@ void GRASP::solucion_grasp(unsigned* p) {
     unsigned long* pu = new unsigned long[tam];
     unsigned long* pd = new unsigned long[tam];   
     
-    unsigned long min_pu = 9999999999;
-    unsigned long min_pd = 9999999999;
+    unsigned long min_pu = 999999999;
+    unsigned long min_pd = 999999999;
     unsigned long max_pu = 0;
     unsigned long max_pd = 0;
     
@@ -174,7 +174,7 @@ void GRASP::solucion_grasp(unsigned* p) {
     for(unsigned i = 0; i < tam; i++) {      
         if(asignados_u[i]) continue; 
         
-        minCoste = 999999999999;
+        minCoste = 999999999;
         maxCoste = 0;
         
         //COSTES
@@ -250,11 +250,10 @@ unsigned long GRASP::obtenerCoste(unsigned* p, vector<unsigned> asignados, unsig
 unsigned long GRASP::ejecutar() {    
     unsigned* p = new unsigned[tam];
     unsigned long costeP;
-    unsigned long mejorCoste = 9999999999;
-    unsigned evaluacion = 0;
+    unsigned long mejorCoste = 999999999;
+    unsigned evaluacion = 0;  
     
-    
-    while(evaluacion < 25) {
+    while(evaluacion < tam*0.6) {
         solucion_grasp(p);        
         costeP = bl->ejecutar(p);
         
