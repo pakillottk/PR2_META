@@ -251,9 +251,12 @@ unsigned long GRASP::ejecutar() {
     unsigned* p = new unsigned[tam];
     unsigned long costeP;
     unsigned long mejorCoste = 999999999;
-    unsigned evaluacion = 0;  
+    unsigned evaluacion = 0;      
+    unsigned tamEval = tam*0.7;   
     
-    while(evaluacion < tam*0.6) {
+    if(tamEval <= 25) tamEval = 300-10*tam;
+    
+    while(evaluacion < tamEval) {
         solucion_grasp(p);        
         costeP = bl->ejecutar(p);
         
