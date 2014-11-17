@@ -268,11 +268,11 @@ unsigned long GRASP::ejecutar() {
             
             mejorCoste = costeP;
             sinMejora = 0;
-            alpha = 0.3;
+            alpha = 0.2;
         } else {
             sinMejora++;
-            if(sinMejora > tamEval/10) {
-                alpha = 0.6;
+            if(sinMejora > 15) {
+                alpha = 0.7;
             }
         }
         
