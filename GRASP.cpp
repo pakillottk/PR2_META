@@ -259,12 +259,12 @@ unsigned long GRASP::ejecutar() {
     unsigned long mejorCoste = 999999999;
     unsigned evaluacion = 0;    
     unsigned sinMejora = 0;
-    unsigned tamEval;   
+    unsigned tamEval;      
     
     if(tamEval <= 25) tamEval = 300-10*tam;
     else tamEval = tam*0.7; 
     
-    while(evaluacion < tamEval) {
+    while(evaluacion < tamEval) {      
         solucion_grasp(p);        
         costeP = bl->ejecutar(p);
         
@@ -278,13 +278,13 @@ unsigned long GRASP::ejecutar() {
             alpha = 0.2;
         } else {
             sinMejora++;
-            if(sinMejora > 15) {
-                alpha = 0.7;
+            if(sinMejora > 20) {
+                alpha = 0.5;
             }
         }
         
         evaluacion++;
     }      
    
-    return mejorCoste;    
+    return mejorCoste;     
 }
