@@ -119,7 +119,7 @@ void GRASP::solucion_grasp(unsigned* p) {
             lrc_u.push_back(i);
         }
         
-        if(pd[i] >= umbral_d) {
+        if(pd[i] <= umbral_d) {
             lrc_d.push_back(i);
         }
     }
@@ -208,7 +208,7 @@ void GRASP::solucion_grasp(unsigned* p) {
         for(unsigned j = 0; j < tam; j++) {
             if(asignados_d[j]) continue;
             
-            if(costes[j] >= umbral) {
+            if(costes[j] <= umbral) {
                 lrc.push_back(j);
             }
         }
